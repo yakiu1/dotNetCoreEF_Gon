@@ -78,6 +78,8 @@ namespace DonNetCoreEFGonPractice.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<Department>> PostDepartment(Department department)
         {
             _context.Department.Add(department);
@@ -88,6 +90,9 @@ namespace DonNetCoreEFGonPractice.Controllers
 
         // DELETE: api/Departments/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<Department>> DeleteDepartment(int id)
         {
             var department = await _context.Department.FindAsync(id);

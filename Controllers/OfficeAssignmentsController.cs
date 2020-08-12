@@ -29,6 +29,9 @@ namespace DonNetCoreEFGonPractice.Controllers
 
         // GET: api/OfficeAssignments/5
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<OfficeAssignment>> GetOfficeAssignment(int id)
         {
             var officeAssignment = await _context.OfficeAssignment.FindAsync(id);
@@ -45,6 +48,10 @@ namespace DonNetCoreEFGonPractice.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> PutOfficeAssignment(int id, OfficeAssignment officeAssignment)
         {
             if (id != officeAssignment.InstructorId)
@@ -77,6 +84,9 @@ namespace DonNetCoreEFGonPractice.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<OfficeAssignment>> PostOfficeAssignment(OfficeAssignment officeAssignment)
         {
             _context.OfficeAssignment.Add(officeAssignment);
@@ -101,6 +111,9 @@ namespace DonNetCoreEFGonPractice.Controllers
 
         // DELETE: api/OfficeAssignments/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<ActionResult<OfficeAssignment>> DeleteOfficeAssignment(int id)
         {
             var officeAssignment = await _context.OfficeAssignment.FindAsync(id);
