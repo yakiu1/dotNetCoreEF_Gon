@@ -1,0 +1,2 @@
+# dotNetCoreEF_Gon
+ practice
