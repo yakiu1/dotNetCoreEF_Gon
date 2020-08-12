@@ -20,6 +20,22 @@ namespace DonNetCoreEFGonPractice.Controllers
             _context = context;
         }
 
+        // GET: api/Courses/CourseStudentCount
+        [HttpGet("DepartmentCourseCount")]
+        public async Task<ActionResult<IEnumerable<VwDepartmentCourseCount>>> GetDepartmentCourseCount()
+        {
+            return await _context.VwDepartmentCourseCount.
+                                    FromSqlRaw("SELECT Department.DepartmentID, Department.Name, COUNT(Department.Name) AS CourseCount From Course, Department WHERE Course.DepartmentID = Department.DepartmentID GROUP BY Department.Name, Department.DepartmentID").
+                                                ToListAsync();
+        }
+
+        // GET: api/Courses/CourseStudentCount
+        [HttpGet("CourseStudentCount")]
+        public async Task<ActionResult<IEnumerable<VwCourseStudentCount>>> GetCourseStudentCount()
+        {
+            return await _context.VwCourseStudentCount.ToListAsync();
+        }
+
         // GET: api/Courses
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
