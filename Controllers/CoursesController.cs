@@ -113,7 +113,9 @@ namespace DonNetCoreEFGonPractice.Controllers
                 return NotFound();
             }
 
-            _context.Course.Remove(course);
+            course.IsDeleted = true;
+            _context.Entry(course).State = EntityState.Modified;
+
             await _context.SaveChangesAsync();
 
             return course;

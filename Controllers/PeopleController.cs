@@ -96,7 +96,8 @@ namespace DonNetCoreEFGonPractice.Controllers
                 return NotFound();
             }
 
-            _context.Person.Remove(person);
+            person.IsDeleted = true;
+            _context.Entry(person).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return person;
