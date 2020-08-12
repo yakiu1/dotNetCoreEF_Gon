@@ -112,7 +112,7 @@ namespace DonNetCoreEFGonPractice.Controllers
             _context.Entry(person).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return person;
+            return Ok();
         }
 
         private bool PersonExists(int id)

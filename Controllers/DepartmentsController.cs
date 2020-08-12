@@ -104,7 +104,7 @@ namespace DonNetCoreEFGonPractice.Controllers
             _context.Entry(department).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return department;
+            return Ok();
         }
 
         private bool DepartmentExists(int id)

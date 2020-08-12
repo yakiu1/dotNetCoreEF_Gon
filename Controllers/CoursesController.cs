@@ -130,7 +130,7 @@ namespace DonNetCoreEFGonPractice.Controllers
 
             await _context.SaveChangesAsync();
 
-            return course;
+            return Ok();
         }
 
         private bool CourseExists(int id)
