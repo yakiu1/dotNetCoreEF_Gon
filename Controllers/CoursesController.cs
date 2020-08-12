@@ -25,7 +25,9 @@ namespace DonNetCoreEFGonPractice.Controllers
         public async Task<ActionResult<IEnumerable<VwDepartmentCourseCount>>> GetDepartmentCourseCount()
         {
             return await _context.VwDepartmentCourseCount.
-                                    FromSqlRaw("SELECT Department.DepartmentID, Department.Name, COUNT(Department.Name) AS CourseCount From Course, Department WHERE Course.DepartmentID = Department.DepartmentID GROUP BY Department.Name, Department.DepartmentID").
+                                    FromSqlRaw("SELECT Department.DepartmentID, Department.Name, COUNT(Department.Name) AS CourseCount From Course, Department " +
+                                                "WHERE Course.DepartmentID = Department.DepartmentID " +
+                                                "GROUP BY Department.Name, Department.DepartmentID").
                                                 ToListAsync();
         }
 
@@ -67,7 +69,7 @@ namespace DonNetCoreEFGonPractice.Controllers
             {
                 return BadRequest();
             }
-
+            course.DateModified = DateTime.Today;
             _context.Entry(course).State = EntityState.Modified;
 
             try

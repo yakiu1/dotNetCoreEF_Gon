@@ -52,6 +52,7 @@ namespace DonNetCoreEFGonPractice.Controllers
                 return BadRequest();
             }
 
+            department.DateModified = DateTime.Today;
             _context.Entry(department).State = EntityState.Modified;
 
             try

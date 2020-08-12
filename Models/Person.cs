@@ -12,5 +12,6 @@ namespace DonNetCoreEFGonPractice.Models
         public DateTime? HireDate { get; set; }
         public DateTime? EnrollmentDate { get; set; }
         public string Discriminator { get; set; }
+        public DateTime DateModified { get; set; }
     }
 }
