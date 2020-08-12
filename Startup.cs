@@ -27,6 +27,7 @@ namespace DonNetCoreEFGonPractice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerDocument();
             services.AddControllers();
 
             services.AddDbContext<ContosouniversityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -41,6 +42,10 @@ namespace DonNetCoreEFGonPractice
             }
 
             app.UseHttpsRedirection();
+
+            // Register the Swagger generator and the Swagger UI middlewares
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 
